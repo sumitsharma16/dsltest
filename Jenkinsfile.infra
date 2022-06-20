@@ -1,0 +1,128 @@
+// To create User Access Job
+
+folder('INFRA')
+pipelineJob("INFRA/user-access") {
+    description('This job provides access to users on servers')
+    keepDependencies(false)
+    definition {
+            cpsScm {
+                    scm {
+                            git {
+                                    remote {
+                                            url(" https://bitbucket.org/dltgeth/pipeline.git")
+                                            
+                                    }
+                                    branch("*/master")
+                            }
+                    }
+                    
+                    lightweight(lightweight = true)
+            }
+    }
+    configure {
+            it / 'properties' / lightweight('true')
+    }
+}
+
+// To Create MongoDB Cluster Creation Job
+folder('INFRA')
+pipelineJob("INFRA/MongoDB-Cluster"){
+    description('This job created 3 Node MongoDB cluster with Authentication and Replication')
+    keepDependencies(false)
+    definition {
+            cpsScm {
+                    scm {
+                            git {
+                                    remote {
+                                            url(" https://bitbucket.org/dltgeth/pipeline.git")
+                                            credentials("builddlt")
+                                    }
+                                    branch("*/master")
+                            }
+                    }
+                    scriptPath("infra/Jenkinsfile.mongodb")
+                    lightweight(lightweight = true)
+            }
+    }
+    configure {
+            it / 'properties' / lightweight('true')
+    }
+}
+
+// To create QA Certify Product Deployment Job
+
+folder('INFRA')
+pipelineJob("INFRA/QA-Certify-Product-Deployment"){
+    description('')
+    keepDependencies(false)
+    definition {
+            cpsScm {
+                    scm {
+                            git {
+                                    remote {
+                                            url(" https://bitbucket.org/dltgeth/pipeline.git")
+                                            credentials("builddlt")
+                                    }
+                                    branch("*/master")
+                            }
+                    }
+                    scriptPath("infra/Jenkinsfile.certify_product_deployment")
+                    lightweight(lightweight = true)
+            }
+    }
+    configure {
+            it / 'properties' / lightweight('true')
+    }
+}
+
+// To create postgresql cluster creation job
+
+folder('INFRA')
+pipelineJob("INFRA/Postgresql-Cluster"){
+    description('This job created 3 Node MongoDB cluster with Authentication and Replication')
+    keepDependencies(false)
+    definition {
+            cpsScm {
+                    scm {
+                            git {
+                                    remote {
+                                            url(" https://bitbucket.org/dltgeth/pipeline.git")
+                                            credentials("builddlt")
+                                    }
+                                    branch("*/master")
+                            }
+                    }
+                    scriptPath("infra/Jenkinsfile.mongodb")
+                    lightweight(lightweight = true)
+            }
+    }
+    configure {
+            it / 'properties' / lightweight('true')
+    }
+}
+
+// To Publish URL's 
+
+folder('INFRA')
+pipelineJob("INFRA/DL-NPM") {
+    description('This job is to publish S3 URLs')
+    keepDependencies(false)
+    definition {
+            cpsScm {
+                    scm {
+                            git {
+                                    remote {
+                                            url(" https://bitbucket.org/dltgeth/pipeline.git")
+                                            credentials("builddlt")
+                                    }
+                                    branch("*/master")
+                            }
+                    }
+                    scriptPath("infra/Jenkinsfile.DL-NPM")
+                    lightweight(lightweight = true)
+            }
+    }
+    configure {
+            it / 'properties' / lightweight('true')
+    }
+}
