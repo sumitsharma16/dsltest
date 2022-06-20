@@ -1,6 +1,6 @@
 // To create User Access Job
 
-folder('INFRA')
+folder('INFRA/TESTINFRA')
 pipelineJob("INFRA/user-access") {
     description('This job provides access to users on servers')
     keepDependencies(false)
