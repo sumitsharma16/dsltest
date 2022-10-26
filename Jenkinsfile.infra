@@ -101,7 +101,7 @@ pipelineJob("INFRA/Postgresql-Cluster"){
     }
 }
 
-// To Publish URL's 
+// To Publish URL's in the repository
 
 folder('INFRA')
 pipelineJob("INFRA/DL-NPM") {
