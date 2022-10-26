@@ -49,7 +49,7 @@ pipelineJob("INFRA/MongoDB-Cluster"){
     }
 }
 
-// To create QA Certify Product Deployment Job for testing
+// To create QA Certify Product Deployment Job for testing purpose
 
 folder('INFRA')
 pipelineJob("INFRA/QA-Certify-Product-Deployment"){
